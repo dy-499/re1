@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!-- TemplateBeginEditable name="doctitle" -->
-<title>Ö÷Ò³</title>
+<title>ä¸»é¡µ</title>
 <!-- TemplateEndEditable -->
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
-<link href="../htmlÑ§Ï°/1.css" rel="stylesheet" type="text/css" />
+<link href="../htmlå­¦ä¹ /1.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 <!--
 body {
@@ -23,21 +23,21 @@ body,td,th {
 <body>
 <div align="center">
   <div class="container">
-    <h1><font face="Arial, Helvetica, sans-serif"></font>Ö÷Ò³</h1>
-    <p align="justify">½éÉÜ</p>
-    <p align="justify">Ò»´ÎÐ¡²âÊÔ£¬´úÂë²»ÊÇ×Ô¼º¸ãµÃ£¨È·ÊµÓÐµãÄÑ£©£¬µ«ÅÅ°æÊÇ£¬¸÷Î»ÓÐÏë·¨¿ÉÒÔÍ¶¸å£¬ÆÀÂÛÔÚ×îÏÂÃæ¡£</p>
+    <h1><font face="Arial, Helvetica, sans-serif"></font>ä¸»é¡µ</h1>
+    <p align="justify">ä»‹ç»</p>
+    <p align="justify">ä¸€æ¬¡å°æµ‹è¯•ï¼Œä»£ç ä¸æ˜¯è‡ªå·±æžå¾—ï¼ˆç¡®å®žæœ‰ç‚¹éš¾ï¼‰ï¼Œä½†æŽ’ç‰ˆæ˜¯ï¼Œå„ä½æœ‰æƒ³æ³•å¯ä»¥æŠ•ç¨¿ï¼Œè¯„è®ºåœ¨æœ€ä¸‹é¢ã€‚</p>
     <h1 align="left">&nbsp;</h1>
   </div>
-  <h1>Ò»¸ëî£µÄ¸öÈËÍøÕ¾</h1>
+  <h1>ä¸€é¸½ç¿çš„ä¸ªäººç½‘ç«™</h1>
   <p>&nbsp;</p>
   <div id="comments-container">
-    <h3>ÆÀÂÛÇø</h3>
-    <textarea id="comment-input" placeholder="ÇëÊäÈëÆÀÂÛ"></textarea>
-    <button id="submit-comment">Ìá½»ÆÀÂÛ</button>
+    <h3>è¯„è®ºåŒº</h3>
+    <textarea id="comment-input" placeholder="è¯·è¾“å…¥è¯„è®º"></textarea>
+    <button id="submit-comment">æäº¤è¯„è®º</button>
     <div id="comments-list">
-      <!-- ´Ó·þÎñÆ÷¼ÓÔØÆÀÂÛ -->
+      <!-- ä»ŽæœåŠ¡å™¨åŠ è½½è¯„è®º -->
       <%
-        // ´ÓÊý¾Ý¿âÖÐ»ñÈ¡ÆÀÂÛ
+        // ä»Žæ•°æ®åº“ä¸­èŽ·å–è¯„è®º
         var comments = getCommentsFromDatabase();
         for (var i = 0; i < comments.length; i++) {
           %>
@@ -57,7 +57,7 @@ const commentsList = document.getElementById('comments-list');
 submitButton.addEventListener('click', () => {
     const text = commentInput.value.trim();
     if (text) {
-        // ·¢ËÍÆÀÂÛµ½·þÎñÆ÷
+        // å‘é€è¯„è®ºåˆ°æœåŠ¡å™¨
         fetch('/submit-comment', {
             method: 'POST',
             headers: {
@@ -68,23 +68,23 @@ submitButton.addEventListener('click', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Çå¿ÕÊäÈë¿ò
+                // æ¸…ç©ºè¾“å…¥æ¡†
                 commentInput.value = '';
-                // Ë¢ÐÂÆÀÂÛÁÐ±í
+                // åˆ·æ–°è¯„è®ºåˆ—è¡¨
                 fetchComments();
             } else {
-                alert('ÆÀÂÛÌá½»Ê§°Ü');
+                alert('è¯„è®ºæäº¤å¤±è´¥');
             }
         });
     }
 });
 
-// ¼ÓÔØÆÀÂÛÁÐ±í
+// åŠ è½½è¯„è®ºåˆ—è¡¨
 function fetchComments() {
     fetch('/get-comments')
         .then(response => response.json())
         .then(data => {
-            commentsList.innerHTML = ''; // Çå¿ÕÏÖÓÐÆÀÂÛ
+            commentsList.innerHTML = ''; // æ¸…ç©ºçŽ°æœ‰è¯„è®º
             data.comments.forEach(comment => {
                 const commentElement = document.createElement('div');
                 commentElement.classList.add('comment');
@@ -98,9 +98,9 @@ function fetchComments() {
 </html>
 
 <%
-// Ä£Äâ´ÓÊý¾Ý¿â»ñÈ¡ÆÀÂÛµÄº¯Êý
+// æ¨¡æ‹Ÿä»Žæ•°æ®åº“èŽ·å–è¯„è®ºçš„å‡½æ•°
 function getCommentsFromDatabase() {
-    // ÕâÀï·µ»ØÒ»¸öÄ£ÄâµÄÆÀÂÛÊý×é
-    return ["ÕâÊÇµÚÒ»ÌõÆÀÂÛ", "ÕâÊÇµÚ¶þÌõÆÀÂÛ"];
+    // è¿™é‡Œè¿”å›žä¸€ä¸ªæ¨¡æ‹Ÿçš„è¯„è®ºæ•°ç»„
+    return ["è¿™æ˜¯ç¬¬ä¸€æ¡è¯„è®º", "è¿™æ˜¯ç¬¬äºŒæ¡è¯„è®º"];
 }
 %>
